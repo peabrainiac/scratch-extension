@@ -44,13 +44,14 @@ const ScratchAPI = (function(){
 		}
 		getNextPage();
 		function getNextPage(){
-			if (remainingIDs.length>0){
+			if (remainingIDs.length>0&&nextPage<10){
 				exports.getCommentsPage(pageType,pageID,nextPage,onCommentPage);
 			}else{
 				callback(commentThreadsGot);
 			}
 		}
 		function onCommentPage(response){
+			console.log(response);
 			for (let i=0;i<remainingIDs.length;i++){
 				var currentID = remainingIDs[i];
 				var element = response.getElementById("comments-"+currentID);
@@ -88,13 +89,17 @@ const ScratchAPI = (function(){
 		var url = "https://api.scratch.mit.edu/projects/"+projectID+"/";
 		sendServerRequest(url,function(response){
 			var data = {};
-			data.id = response.id;
-			data.title = response.title;
-			data.image = response.image;
-			data.author = response.author;
-			data.stats = {loves:response.stats.loves,favs:response.stats.favorites,views:response.stats.views,remixes:response.stats.remixes,comments:response.stats.comments};
-			data.shared = response.is_published;
-			data.remixed = response.remix;
+			if (response.id==projectID){
+				data.id = response.id;
+				data.title = response.title;
+				data.image = response.image;
+				data.author = response.author;
+				data.stats = {loves:response.stats.loves,favs:response.stats.favorites,views:response.stats.views,remixes:response.stats.remixes,comments:response.stats.comments};
+				data.shared = response.is_published;
+				data.remixed = response.remix;
+			}else {
+				data = undefined;
+			}
 			callback(data);
 		});
 	};

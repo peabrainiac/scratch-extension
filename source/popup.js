@@ -142,14 +142,21 @@ function displayMessages(data){
 	function displayRemix(remix,box,onResize){
 		chrome.runtime.sendMessage({action:"getProjectData",data:{id:remix.id}});
 		onDataGet["data-project-"+remix.id] = function(data){
-			var imageLink = createElement("a","box-img-a",box);
-			var image = createElement("img","box-img",imageLink);
-			imageLink.href = projectURL(data.id);
-			image.src = data.image;
-			createHyperlink(data.title,projectURL(data.id),createElement("div","box-title",box));
-			var text = createElement("div","box-text",box);
-			createTextNode("remixed by ",text);
-			createHyperlink("@"+remix.user,userURL(remix.user),text);
+			if (data){
+				var imageLink = createElement("a","box-img-a",box);
+				var image = createElement("img","box-img",imageLink);
+				imageLink.href = projectURL(data.id);
+				image.src = data.image;
+				createHyperlink(data.title,projectURL(data.id),createElement("div","box-title",box));
+				var text = createElement("div","box-text",box);
+				createTextNode("remixed by ",text);
+				createHyperlink("@"+remix.user,userURL(remix.user),text);
+			}else{
+				var title = createElement("div","box-title",box);
+				createTextNode("Remix by ",title);
+				createHyperlink("@"+remix.user,userURL(remix.user),title);
+				createTextNode("Failed to load project details",box);
+			}
 			onResize();
 		};
 	}

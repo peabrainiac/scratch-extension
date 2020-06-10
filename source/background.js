@@ -51,6 +51,7 @@ function receiveMessage(message,sender,sendResponse){
 }
 function refreshMessageCount(){
 	ScratchAPI.getMessageCount(function(response){
+		console.log(response);
 		if (response.msg_count!==undefined){
 			displayMessageCount(response.msg_count);
 		}else{

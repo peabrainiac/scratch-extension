@@ -190,79 +190,68 @@ h1, h2, h3, h4, h5, p {
 
 /* projects */
 
-.box-head .wip {
-	color: #606060;
+.preview .project-lower-container {
+	background: #181818;
+	box-shadow: 0 0 20px #000000;
 }
-.showcase .actions {
-	background-color: #303030;
-	border-color: #505050;
+.stage-header_stage-button_hkl9B {
+	background: #202020;
+	filter: grayscale(100%);
 }
-.showcase .action {
+.preview .remix-credit, .preview .project-description {
+	background: #202020;
+	border-color: #303030;
+}
+.subactions .share-date {
+	color: #505050;
+}
+.subactions .action-buttons .action-button {
+	background-color: #ff8000;
+	box-shadow: 0 0 0 #ffaf00;
+	transition: box-shadow 0.5s ease, background 0.5s ease;
+}
+.subactions .action-buttons .action-button.report-button {
+	background-color: #ff5000;
+}
+.subactions .action-buttons .action-button:hover, .subactions .action-buttons .action-button.report-button:hover {
+	box-shadow: 0 0 5px #ffaf00;
+	background: #ffaf00;
+}
+.comment .comment-body .comment-bubble, .comment .comment-body .comment-bubble:before {
+	background: #303030;
+}
+.comment .comment-body .comment-bubble {
+	box-shadow: 2px 2px 5px #000000;
+}
+.inplace-textarea {
+	background: #303030;
 	color: #dfdfdf;
-	border-color: #505050;
 }
-.media-col li {
-	border-color: #505050;
-	border-top-color: transparent;
+.inplace-textarea:focus {
+	border-color: #ffaf0080;
+	box-shadow: 0 0 0 4px #ffaf0040;
 }
-.gallery.thumb span.image {
-	background: #505050;
+.preview .remix-button {
+	background-color: #505050;
+}
+.preview .see-inside-button, .preview .button.compose-post {
+	background-color: #ff8000;
 	border-color: transparent;
-	box-shadow: 0 0 5px #000000;
+	box-shadow: 0 0 0 #ff8000;
+	transition-timing-function: linear;
 }
-.action a.remix-tree {
-	background: #303030;
-	box-shadow: 0 0 5px #000000;
-	border-color: #505050 !important;
+.preview .see-inside-button:hover, .preview .button.compose-post:hover {
+	background-color: #ffaf00;
+	box-shadow: 0 0 5px #ffaf00;
 }
-.action a.remix-tree:hover {
+.compose-comment .compose-bottom-row .compose-cancel {
 	background: #505050;
 }
-.icon.favorite, .icon.love, .icon.views, .icon.remix-tree {
-	filter: invert(100%);
-	color: #202020;
+.compose-comment .compose-bottom-row .compose-cancel:hover {
+	background: #ffaf00;
 }
-.favorite.on, .love.on, #stats.active .action:hover .favorite, #stats.active .action:hover .love {
-	filter: none;
-	color: #dfdfdf;
-}
-#project-tags span.tag {
-	background: #60606040;
-	transition: background 0.25s ease, box-shadow 0.25s ease;
-}
-#project-tags span.tag:hover {
-	background: #505050;
-	box-shadow: 0 0 5px #202020;
-}
-.showcase .info .fixed {
-	border-color: #505050;
-}
-.player-box-footer-module {
-	background: #303030;
-}
-.player-box-footer-module .studio-list {
-	background: #202020;
-	border-color: #505050;
-}
-.player-box-footer-module .studio-list ul li:not(:last-child) {
-	border-color: #505050;
-}
-.player-box-footer-module .studio-list ul li a {
-	color: #a0a0a0;
-	transition: color 0.2s ease;
-}
-.player-box-footer-module .studio-list ul li:hover a {
-	color: #ff8000;
-}
-.icon-sm.checkmark {
-	filter: invert(100%);
-}
-.close, .close:hover {
-	text-shadow: none;
-	color: #ffffff;
-}
-.player-box-footer-module textarea, .player-box-footer-module div.section.social textarea {
-	background: #202020;
+.preview .thumbnail.gallery .thumbnail-image, .preview .thumbnail.project .thumbnail-image {
+	width: 204px;
 }
 
 /* explore bar */

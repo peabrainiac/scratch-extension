@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Scratch Extension",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "Multipurpose extension for scratch.mit.edu",
 	"icons": {
 		"32": "favicon.png"
