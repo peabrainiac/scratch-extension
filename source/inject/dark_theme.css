@@ -19,7 +19,7 @@ a:hover {
 label {
 	color: #a0a0a0;
 }
-input[type="text"], textarea, select {
+input[type="text"], input[type="password"], textarea, select {
 	color: #dfdfdf;
 	background: #303030;
 	border-color: #505050;
@@ -27,7 +27,7 @@ input[type="text"], textarea, select {
 .select select:focus {
 	border-color: #ffaf00;
 }
-input[type="text"]:focus {
+input[type="text"]:focus, input[type="password"]:focus {
 	border-color: #ffaf00;
 	box-shadow: inset 0 1px 1px transparent, 0 0 8px rgba(255,175,0,0.6);
 }
@@ -66,6 +66,38 @@ h1, h2, h3, h4, h5, p {
 	box-shadow: none;
 }
 
+/* login dropdown on new top nav */
+
+#navigation .dropdown {
+	background-color: #404040;
+	box-shadow: 0 0 10px #000000;
+}
+#navigation .dropdown::before {
+	background-color: inherit;
+}
+#navigation .dropdown label {
+	color: #ffffff;
+}
+
+/* banner on start page */
+
+.title-banner.intro-banner {
+	background-color: inherit;
+}
+.title-banner.intro-banner .intro-container {
+	background-color: #4d97ff80;
+}
+.title-banner.intro-banner .intro-subnav {
+	background-color: #4d97ff20;
+}
+.title-banner.intro-banner .intro-button {
+	background-color: #808080;
+	color: #ffffff;
+}
+.title-banner.intro-banner .intro-button:hover {
+	background-color: #ffaf00;
+}
+
 /* Footer */
 
 #footer {
@@ -84,6 +116,12 @@ h1, h2, h3, h4, h5, p {
 .language-chooser .select select option {
 	background-color: #505050;
 	color: #ffffff;
+}
+#donor {
+	background-color: #202020;
+}
+#donor-text {
+	color: #afafaf;
 }
 
 /* Boxes */
@@ -647,6 +685,12 @@ li.active, .tabs-index li.active {
 }
 .button.grey.disabled:hover {
 	border-color: transparent;
+}
+.button.white {
+	background-color: #808080;
+	color: #ffffff;
+}.button.white:hover {
+	background-color: #ffaf00;
 }
 
 /* Icons */
