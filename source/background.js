@@ -258,6 +258,9 @@ function displayMessageCount(count){
 	chrome.browserAction.setBadgeText({text:""+(count||"")});
 	chrome.browserAction.setBadgeBackgroundColor({color:[255,Math.floor(100+75*50/(50+count)),0,255]});
 	chrome.browserAction.setIcon({path:"favicon.png"});
+	if (chrome.browserAction.setBadgeTextColor){
+		chrome.browserAction.setBadgeTextColor({color:"#ffffff"});
+	}
 }
 function displayOfflineSymbol(){
 	chrome.browserAction.setBadgeText({text:""});

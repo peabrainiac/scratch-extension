@@ -212,6 +212,7 @@ textarea {
 
 .comment-box {
 	margin: 5px;
+	margin-bottom: 4px;
 	background: #efefef;
 	border-radius: 5px 5px 0 5px;
 	padding: 5px;
@@ -219,7 +220,7 @@ textarea {
 	transition: box-shadow 0.2s linear;
 }
 .comment-box.reply {
-	margin: 5px 5px 5px 35px;
+	margin-left: 35px;
 }
 .comment-box.new {
 	background:#e0f0ff;
@@ -331,35 +332,39 @@ textarea {
 	height: 14px;
 	display: inline-block;
 	vertical-align:  middle;
+	background-position-x: -7px;
 }
 .symbol-remix {
-	background-position: -7px -196px;
+	background-position-y: -196px;
 }
 .symbol-love {
-	background-position: -7px -86px;
+	background-position-y: -86px;
 }
 .symbol-fav {
-	background-position: -7px -142px;
+	background-position-y: -142px;
 }
 .symbol-comment {
-	background-position: -7px -29px;
+	background-position-y: -29px;
 }
 .symbol-project {
-	background-position: -7px -225px;
+	background-position-y: -225px;
+}
+.symbol-follow {
+	background-position-y: -290px;
 }
 .symbol-view-grey {
-	background-position: -7px -405px;
+	background-position-y: -405px;
 	opacity: 0.4;
 }
 .symbol-remix-grey {
-	background-position: -7px -182px;
+	background-position-y: -182px;
 	opacity: 0.4;
 }
 .symbol-love-grey {
-	background-position: -7px -58px;
+	background-position-y: -58px;
 	opacity: 0.4;
 }
 .symbol-fav-grey {
-	background-position: -7px -128px;
+	background-position-y: -128px;
 	opacity: 0.4;
 }

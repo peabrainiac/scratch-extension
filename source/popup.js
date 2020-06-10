@@ -27,6 +27,7 @@ function receiveMessage(message){
 	}
 }
 function displayMessages(data){
+	console.log("message data:",data);
 	currentUser = data.user;
 	if (data.follows||data.invites||data.comments||data.projects||data.studios){
 		addClearButton();
@@ -73,17 +74,16 @@ function displayMessages(data){
 		bundle.expand();
 	}
 	function displayComments(comments){
+		console.log("comments:",comments);
 		var bundle = createMessageBundle();
 		var length = comments.ownProfile?comments.ownProfile.length:0;
 		if (comments.profiles){
 			for (let i=0;i<comments.profiles.length;i++){
-				//console.log("Comments on "+comments.profiles[i]+"'s profile:",comments.profileComments[comments.profiles[i]]);
 				length += comments.profileComments[comments.profiles[i]].length;
 			}
 		}
 		if (comments.projects){
 			for (let i=0;i<comments.projects.ids.length;i++){
-				//console.log("Comments on project:",comments.projects[comments.projects.ids[i]].comments);
 				length += comments.projects[comments.projects.ids[i]].comments.length;
 			}
 		}

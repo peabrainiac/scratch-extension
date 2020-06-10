@@ -349,9 +349,13 @@ h1, h2, h3, h4, h5, p {
 ul.curators li {
 	background: #303030;
 	border-color: transparent;
+	box-shadow: 2px 2px 4px #00000080;
 }
 ul.curators li img {
 	border-color: #505050;
+}
+.control-group.append-to-input .button {
+	border-color: transparent;
 }
 
 /* explore page */
@@ -581,6 +585,9 @@ li.active, .tabs-index li.active {
 }
 .icon-xs.project.black {
 	background-position-y: -252px;
+}
+.icon-xs.follower.black {
+	background-position-y: -290px;
 }
 .cols.related .box-head .icon-sm.comment {
 	background-position-y: -51px;

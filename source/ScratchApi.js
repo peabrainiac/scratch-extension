@@ -183,18 +183,42 @@ const ScratchAPI = (function(){
 		}
 		return {requestHeaders:request.requestHeaders};
 	};
-	function hasReferer(request){
-		var gotRef = false;
+	requestHandlers.setReferer = function(request){
+		console.log("received request:",request);
+		console.log("X-Set-Referer:",hasHeader(request,"X-Set-Referer"));
+		console.log("Referer:",hasHeader(request,"Referer"));
+		if (hasHeader(request,"X-Set-Referer")&&!hasHeader(request,"Referer")){
+			console.log("adding Header");
+			request.requestHeaders.push({name:"Referer",value:getHeader(request,"X-Set-Referer")});
+		}
+		console.log("new headers:",request.requestHeaders);
+		return {requestHeaders:request.requestHeaders};
+	};
+	function hasHeader(request,header){
+		var gotHeader = false;
 		for (let i=0,l=request.requestHeaders.length;i<l;i++){
-			if (request.requestHeaders[i].name=="Referer"){
-				gotRef = true;
+			if (request.requestHeaders[i].name==header){
+				gotHeader = true;
 			}
 		}
-		return gotRef;
+		return gotHeader;
+	}
+	function getHeader(request,header){
+		var value;
+		for (let i=0,l=request.requestHeaders.length;i<l;i++){
+			if (request.requestHeaders[i].name==header){
+				value = request.requestHeaders[i].value;
+			}
+		}
+		return value;
+	}
+	function hasReferer(request){
+		hasHeader(request,"Referer");
 	}
 	chrome.webRequest.onBeforeSendHeaders.addListener(requestHandlers.onMessageClear,{urls:["https://scratch.mit.edu/site-api/messages/messages-clear/"]},["blocking","requestHeaders"]);
 	chrome.webRequest.onBeforeSendHeaders.addListener(requestHandlers.onAddProfileComment,{urls:["https://scratch.mit.edu/site-api/comments/user/*/add/"]},["blocking","requestHeaders"]);
 	chrome.webRequest.onBeforeSendHeaders.addListener(requestHandlers.onAddProjectComment,{urls:["https://scratch.mit.edu/site-api/comments/project/*/add/"]},["blocking","requestHeaders"]);
+	chrome.webRequest.onBeforeSendHeaders.addListener(requestHandlers.setReferer,{urls:["https://scratch.mit.edu/site-api/users/curators-in/*/promote/?*","https://scratch.mit.edu/site-api/users/curators-in/*/remove/?*"]},["blocking","requestHeaders"]);
 	function sendServerRequest(url,callback,options={}){
 		var onError = options.errorHandler||callback;
 		var request = new XMLHttpRequest();
