@@ -1,13 +1,13 @@
 {
 	"manifest_version": 2,
 	"name": "Scratch Extension",
-	"version": "1.0",
-	"description": "Messaging extension for scratch.mit.edu",
+	"version": "1.0.1",
+	"description": "Multipurpose extension for scratch.mit.edu",
 	"icons": {
-		"32": "favicon.ico"
+		"32": "favicon.png"
 	},
 	"background": {
-		"scripts": ["background.js"],
+		"scripts": ["ScratchApi.js","Debug.js","background.js"],
 		"persistent": true
 	},
 	"browser_action": {
@@ -17,12 +17,12 @@
 	"permissions": [
 		"alarms",
 		"storage",
+		"tabs",
 		"cookies",
 		"webRequest",
 		"webRequestBlocking",
 		"https://api.scratch.mit.edu/",
-		"https://scratch.mit.edu/*",
-		"https://clouddata.scratch.mit.edu/*"
+		"https://scratch.mit.edu/*"
 	],
 	"applications": {
 		"gecko": {

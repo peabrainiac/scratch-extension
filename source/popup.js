@@ -59,7 +59,6 @@ function displayMessages(data){
 			var line = createElement("div","message-bundle-line",bundle.body);
 			createHyperlink(followers[i],userURL(followers[i]),line);
 		}
-		bundle.expand();
 	}
 	function displayInvitations(invites){
 		var bundle = createMessageBundle();
@@ -71,6 +70,7 @@ function displayMessages(data){
 			createTextNode("by ",right);
 			createHyperlink(invites[i].user,userURL(invites[i].user),right);
 		}
+		bundle.expand();
 	}
 	function displayComments(comments){
 		var bundle = createMessageBundle();
@@ -108,32 +108,22 @@ function displayMessages(data){
 				displayCommentThreads({type:"project",id:projectID,name:"project-"+projectID},createElement("div","message-bundle-comments",bundle.body),bundle.resize);
 			}
 		}
+		bundle.expand();
 	}
 	function displayProjectActivity(project){
 		var bundle = createMessageBundle();
-		var span = createElement("div","message-bundle-header-right",bundle.header);
 		createTextNode(project.title,bundle.header);
-		if (project.loves){
-			createTextNode(project.loves.length,span);
-			createElement("span","symbol-love",span);
-		}
-		if (project.favs){
-			createTextNode(project.favs.length,span);
-			createElement("span","symbol-fav",span);
-		}
-		if (project.comments){
-			createTextNode(project.comments.length,span);
-			createElement("span","symbol-comment",span);
-		}
-		if (project.remixes){
-			createTextNode(project.remixes.length,span);
-			createElement("span","symbol-remix",span);
-		}
-		if (project.loves||project.favs||project.remixes){
-			loadProjectStats(project.id,createElement("div","message-bundle-stats",bundle.body),bundle.resize);
-		}
-		if (project.comments){
+		bundle.addIcon("love",project.loves.length);
+		bundle.addIcon("fav",project.favs.length);
+		bundle.addIcon("comment",project.comments.length);
+		bundle.addIcon("remix",project.remixes.length);
+		loadProjectStats(project.id,createElement("div","message-bundle-stats",bundle.body),bundle.resize);
+		displayRemixes(project.remixes,bundle.body,bundle.resize);
+		if (project.comments.length>0){
 			displayCommentThreads({type:"project",id:project.id,name:"project-"+project.id},createElement("div","message-bundle-comments",bundle.body),bundle.resize);
+		}
+		if (project.comments.length>0||project.remixes.length>0){
+			bundle.expand();
 		}
 	}
 	function displayStudioActivities(studios){
@@ -143,6 +133,25 @@ function displayMessages(data){
 			var line = createElement("div","message-bundle-line",bundle.body);
 			createHyperlink(studios[studios.ids[i]].title,studioURL(studios.ids[i]),line);
 		}
+	}
+	function displayRemixes(remixes,container,onResize){
+		for (let i=0;i<remixes.length;i++){
+			displayRemix(remixes[i],createElement("div","box",container),onResize);
+		}
+	}
+	function displayRemix(remix,box,onResize){
+		chrome.runtime.sendMessage({action:"getProjectData",data:{id:remix.id}});
+		onDataGet["data-project-"+remix.id] = function(data){
+			var imageLink = createElement("a","box-img-a",box);
+			var image = createElement("img","box-img",imageLink);
+			imageLink.href = projectURL(data.id);
+			image.src = data.image;
+			createHyperlink(data.title,projectURL(data.id),createElement("div","box-title",box));
+			var text = createElement("div","box-text",box);
+			createTextNode("remixed by ",text);
+			createHyperlink("@"+remix.user,userURL(remix.user),text);
+			onResize();
+		};
 	}
 }
 function displayCommentThreads(enviroment,container,onResize){
@@ -273,16 +282,16 @@ function postComment(text,pageType,pageID,threadID,parentID,callback){
 	onDataGet["comment-response-"+threadID+"-"+parentID] = callback;
 }
 function loadProjectStats(projectID,line,callback){
-	chrome.runtime.sendMessage({action:"getProjectStats",data:{id:projectID}});
-	onDataGet["stats-project-"+projectID] = function(data){
+	chrome.runtime.sendMessage({action:"getProjectData",data:{id:projectID}});
+	onDataGet["data-project-"+projectID] = function(data){
 		//console.log("Got project stats data:",data);
-		createTextNode(data.views,line);
+		createTextNode(data.stats.views,line);
 		createElement("span","symbol-view-grey",line);
-		createTextNode(data.loves,line);
+		createTextNode(data.stats.loves,line);
 		createElement("span","symbol-love-grey",line);
-		createTextNode(data.favs,line);
+		createTextNode(data.stats.favs,line);
 		createElement("span","symbol-fav-grey",line);
-		createTextNode(data.remixes,line);
+		createTextNode(data.stats.remixes,line);
 		createElement("span","symbol-remix-grey",line);
 		callback();
 	}
@@ -307,7 +316,6 @@ function addClearButton(){
 	createTextNode("mark as read",button);
 	container.style.top = "-20px";
 	button.addEventListener("click",function(){
-		reload();
 		chrome.runtime.sendMessage({action:"clearUnreadMessages"});
 	});
 }
@@ -320,18 +328,19 @@ function hideProgressbar(){
 	document.getElementById("progressbar").style.height = 0;
 }
 function projectURL(id){
-	return "https://scratch.mit.edu/projects/"+id;
+	return "https://scratch.mit.edu/projects/"+id+"/";
 }
 function studioURL(id){
-	return "https://scratch.mit.edu/studios/"+id;
+	return "https://scratch.mit.edu/studios/"+id+"/";
 }
 function userURL(user){
-	return "https://scratch.mit.edu/users/"+user;
+	return "https://scratch.mit.edu/users/"+user+"/";
 }
 function createMessageBundle(){
 	var bundle = {};
 	bundle.container = createElement("div","message-bundle",document.getElementById("content"));
 	bundle.header = createElement("div","message-bundle-header",bundle.container);
+	bundle.headerIcons = createElement("div","message-bundle-header-right",bundle.header);
 	bundle.bodyWrapper = createElement("div","message-bundle-wrapper",bundle.container);
 	bundle.body = createElement("div","message-bundle-body",bundle.bodyWrapper);
 	bundle.expanded = false;
@@ -339,19 +348,19 @@ function createMessageBundle(){
 		bundle.bodyWrapper.style.height = bundle.body.clientHeight+2;
 		bundle.header.style.cursor = "auto";
 		bundle.expanded = true;
-	}
+	};
 	bundle.collapse = function(){
 		bundle.bodyWrapper.style.height = 0;
 		bundle.header.style.cursor = "pointer";
 		bundle.expanded = false;
-	}
+	};
 	bundle.toggleExpanded = function(){
 		if (bundle.expanded){
 			bundle.collapse();
 		}else{
 			bundle.expand();
 		}
-	}
+	};
 	bundle.resize = function(){
 		if (bundle.expanded){
 			bundle.expand();
@@ -359,10 +368,16 @@ function createMessageBundle(){
 		}else {
 			bundle.collapse();
 		}
-	}
+	};
 	bundle.resetScroll = function(){
 			bundle.bodyWrapper.scrollTop = 0
-	}
+	};
+	bundle.addIcon = function(icon,amount){
+		if (amount>0){
+			createTextNode(" "+amount,bundle.headerIcons);
+			createElement("span","symbol-"+icon,bundle.headerIcons);
+		}
+	};
 	bundle.header.addEventListener("click",bundle.toggleExpanded);
 	bundle.collapse();
 	return bundle;
