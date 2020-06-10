@@ -1,0 +1,32 @@
+{
+	"manifest_version": 2,
+	"name": "Scratch Extension",
+	"version": "1.0",
+	"description": "Messaging extension for scratch.mit.edu",
+	"icons": {
+		"32": "favicon.ico"
+	},
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": true
+	},
+	"browser_action": {
+		"default_icon": "favicon.ico",
+		"default_popup": "popup.html"
+	},
+	"permissions": [
+		"alarms",
+		"storage",
+		"cookies",
+		"webRequest",
+		"webRequestBlocking",
+		"https://api.scratch.mit.edu/",
+		"https://scratch.mit.edu/*",
+		"https://clouddata.scratch.mit.edu/*"
+	],
+	"applications": {
+		"gecko": {
+			"id": "scratchExtension@peabrainiac.blogspot.com"
+		}
+	}
+}
