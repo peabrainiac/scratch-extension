@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Scratch Extension",
-	"version": "1.0.1",
+	"version": "1.1",
 	"description": "Multipurpose extension for scratch.mit.edu",
 	"icons": {
 		"32": "favicon.png"
@@ -14,6 +14,18 @@
 		"default_icon": "favicon.ico",
 		"default_popup": "popup.html"
 	},
+	"content_scripts": [
+		{
+			"run_at": "document_start",
+			"matches": ["https://scratch.mit.edu/*"],
+			"js": ["inject/inject.js"]
+		}
+	],
+	"web_accessible_resources": [
+		"inject/inject.css",
+		"inject/dark_theme.css",
+		"inject/icons_xs.png"
+	],
 	"permissions": [
 		"alarms",
 		"storage",

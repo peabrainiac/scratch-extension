@@ -3,6 +3,7 @@ chrome.runtime.onInstalled.addListener(init);
 chrome.runtime.onStartup.addListener(init);
 chrome.alarms.onAlarm.addListener(onAlarm);
 var userData = {};
+var themeSettings;
 function init(){
 	chrome.alarms.create("refresh",{periodInMinutes:2});
 	refreshMessageCount();
@@ -12,7 +13,7 @@ function onAlarm(alarm){
 		refreshMessageCount();
 	}
 }
-function receiveMessage(message){
+function receiveMessage(message,sender,sendResponse){
 	if (message.action=="getData"){
 		getUnreadMessages();
 	}else if (message.action=="clearProjectsList"){
@@ -23,6 +24,29 @@ function receiveMessage(message){
 		clearUnreadMessages();
 	}else if (message.action=="postComment"){
 		postComment(message.data);
+	}else if (message.action=="getThemeSettings"){
+		if (themeSettings){
+			sendResponse(themeSettings);
+		}else{
+			chrome.storage.local.get("themeSettings",function(response){
+				themeSettings = response.themeSettings||{darkThemeEnabled:false};
+				sendResponse(themeSettings);
+			});
+		}
+		return true;
+		/*return new Promise(function(resolve,reject){
+			if (themeSettings){
+				resolve(themeSettings);
+			}else{
+				chrome.storage.local.get("themeSettings",function(response){
+					themeSettings = response.themeSettings||{darkThemeEnabled:false};
+					resolve(themeSettings);
+				});
+			}
+		});*/
+	}else if (message.action=="setThemeSettings"){
+		themeSettings = message.settings;
+		chrome.storage.local.set({themeSettings:message.settings});
 	}
 }
 function refreshMessageCount(){

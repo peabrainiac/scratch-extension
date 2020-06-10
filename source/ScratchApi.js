@@ -106,7 +106,7 @@ const ScratchAPI = (function(){
 		sendServerRequest(url,callback);
 	};
 	exports.postComment = function(url,commentText,commentThread,commentRecipient,csrfToken,callback){
-		var postData = '{"content":"'+commentText+'","parent_id":'+(commentThread||'""')+',"commentee_id":'+(commentRecipient||'""')+'}';
+		var postData = '{"content":"'+commentText.replace(/"/g,"\\\"")+'","parent_id":'+(commentThread||'""')+',"commentee_id":'+(commentRecipient||'""')+'}';
 		sendServerRequest(url,function(response){
 			var commentData;
 			if ((response instanceof HTMLDocument)&&(response.getElementsByClassName("comment").length>0)){
@@ -210,7 +210,7 @@ const ScratchAPI = (function(){
 			request.setRequestHeader("X-CSRFToken",options.csrfToken);
 		}
 		request.onload = function(){
-			callback(request.response);
+			callback(request.response||{err:"No Response from "+url});
 		}
 		request.onerror = function(){
 			onError({err:request.statusText});
