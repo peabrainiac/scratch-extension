@@ -19,7 +19,7 @@ a:hover {
 label {
 	color: #a0a0a0;
 }
-input, textarea, select {
+input[type="text"], textarea, select {
 	color: #dfdfdf;
 	background: #303030;
 	border-color: #505050;
@@ -27,7 +27,7 @@ input, textarea, select {
 .select select:focus {
 	border-color: #ffaf00;
 }
-input:focus {
+input[type="text"]:focus {
 	border-color: #ffaf00;
 	box-shadow: inset 0 1px 1px transparent, 0 0 8px rgba(255,175,0,0.6);
 }
@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, p {
 	background: #303030;
 }
 
-/* projects */
+/* project pages */
 
 .preview .project-lower-container {
 	background: #181818;
@@ -223,11 +223,19 @@ h1, h2, h3, h4, h5, p {
 .comment .comment-body .comment-bubble {
 	box-shadow: 2px 2px 5px #000000;
 }
-.inplace-textarea {
+.inplace-textarea, .inplace-input {
 	background: #303030;
 	color: #dfdfdf;
 }
-.inplace-textarea:focus {
+.preview .project-notes .inplace-textarea {
+	background: #202020;
+	border-color: #303030;
+}
+.preview .project-title .inplace-input {
+	background: #202020;
+	border-color: #303030;
+}
+.inplace-textarea:focus, .inplace-input:focus, .preview .project-notes .inplace-textarea:focus, .preview .project-title .inplace-input:focus {
 	border-color: #ffaf0080;
 	box-shadow: 0 0 0 4px #ffaf0040;
 }
@@ -250,8 +258,94 @@ h1, h2, h3, h4, h5, p {
 .compose-comment .compose-bottom-row .compose-cancel:hover {
 	background: #ffaf00;
 }
+.replies.collapsed > .comment:last-of-type::after {
+	background: linear-gradient(#18181800,#181818c0);
+}
+.expand-thread::before, .expand-thread::after {
+	background: #ffaf0080;
+}
 .preview .thumbnail.gallery .thumbnail-image, .preview .thumbnail.project .thumbnail-image {
 	width: 204px;
+}
+
+/* project player & editor */
+
+.preview .guiPlayer {
+	color: #575e75;
+}
+.gui_body-wrapper_-N0sA {
+	background: #202020;
+	color: #575e75;
+}
+.gui_extension-button-container_b4rCs {
+	background: #ff8000;
+	border-color: transparent;
+	box-shadow: 0 0 0 #ff8000;
+	transition: background 0.2s ease, box-shadow 0.3s ease;
+}
+.gui_extension-button-container_b4rCs:hover {
+	background: #ffaf00;
+	box-shadow: 0 0 10px #ffaf00;
+}
+.gui_extension-button-container_b4rCs > button, .gui_extension-button-container_b4rCs > button:hover {
+	background: transparent;
+}
+.gui_tab_27Unf {
+	background: #404040;
+	color: #dfdfdf;
+	border-color: transparent;
+	box-shadow: 0 0 5px #000000;
+}
+.gui_tab_27Unf:hover {
+	background: #706050;
+}
+.gui_tab_27Unf.gui_is-selected_sHAiu {
+	background: #505050;
+	filter: hue-rotate(160deg);
+}
+.backpack_backpack-container_2_wGr, .backpack_backpack-header_6ltCS, .backpack_status-message_3kt5s {
+	color: #dfdfdf;
+}
+.backpack_backpack-header_6ltCS {
+	background: #505050;
+}
+.stage-selector_stage-selector_3oWOr {
+	background: #303030;
+	color: #dfdfdf;
+}
+
+/* blockly */
+
+.blocklySvg {
+	background: #101010;
+}
+.blocklyMainBackground {
+	opacity: 0;
+}
+.blocklyScrollbarHandle {
+	fill: #505050;
+}
+.blocklyFlyoutBackground {
+	fill: #303030;
+}
+.blocklyFlyoutLabelText {
+	fill: #dfdfdf;
+}
+.blocklyToolboxDiv {
+	background: #404040;
+}
+.scratchCategoryMenu {
+	color: #dfdfdf;
+	background: #404040;
+}
+.scratchCategoryMenuItem.categorySelected {
+	background: #706050;
+}
+.scratchCategoryMenuItem:hover {
+	color: #ffaf00 !important;
+}
+.blocklyZoom {
+	filter: invert(85%);
 }
 
 /* explore bar */

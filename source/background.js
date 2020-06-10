@@ -95,6 +95,7 @@ function getUnreadMessages(){
 				}else{
 					userData.cache.unread = messages.concat(userData.cache.unread);
 					Debug.log("loaded "+(userData.cache.unread.length-messages.length)+" from cache, "+messages.length+" from server");
+					Debug.log("all unread messages: ",userData.cache.unread);
 				}
 				if (userData.cache.unread.length>0){
 					userData.cache.lastID = userData.cache.unread[0].id;
