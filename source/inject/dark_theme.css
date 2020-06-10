@@ -38,6 +38,9 @@ h1, h2, h3, h4, h5, p {
 	opacity: 0.1;
 	filter: invert(100%);
 }
+::selection {
+	background-color: #ffaf0060;
+}
 
 /* topnav */
 
@@ -225,16 +228,34 @@ h1, h2, h3, h4, h5, p {
 #comments .highlighted {
 	background: #303030;
 }
+#comments #comments-loading {
+	background-color: inherit;
+}
+
+/* project player */
+
+.stage-header_stage-header-wrapper-overlay_5vfJa {
+	background-color: #303030;
+}
+.green-flag_green-flag_1kiAo:hover, .stop-all_stop-all_1Y8P9:hover {
+	background-color: #ffaf0030;
+}
+.green-flag_green-flag_1kiAo.green-flag_is-active_2oExT {
+	background-color: #ffaf0050;
+}
+.stage-header_stage-button_hkl9B {
+	background: #202020;
+	filter: grayscale(100%);
+}
+.stage_stage-wrapper-overlay_fmZuD {
+	background-color: #181818;
+}
 
 /* project pages */
 
 .preview .project-lower-container {
 	background: #181818;
 	box-shadow: 0 0 20px #000000;
-}
-.stage-header_stage-button_hkl9B {
-	background: #202020;
-	filter: grayscale(100%);
 }
 .preview .remix-credit, .preview .project-description {
 	background: #202020;
@@ -726,6 +747,16 @@ li.active, .tabs-index li.active {
 	background-position-y: -273px;
 }
 
+/* modals */
+
+
+.modal-overlay {
+	background-color: rgba(0,0,0,0.75);
+}
+.modal-content {
+	background-color: #202020;
+}
+
 /* intro */
 
 .intro .video {
@@ -737,9 +768,6 @@ li.active, .tabs-index li.active {
 }
 .intro .project-count {
 	color: #ffaf00;
-}
-.modal-overlay {
-	background-color: rgba(0,0,0,0.75);
 }
 .intro .sprite .circle {
 	box-shadow: 0 0 2px #ff8000;
