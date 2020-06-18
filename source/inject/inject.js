@@ -37,7 +37,7 @@ function applySettings(settings){
 	}
 }
 function enableDarkTheme(){
-	darkThemeCSS = darkThemeCSS||injectCSS("inject/dark_theme.css");
+	darkThemeCSS = darkThemeCSS||injectCSS("inject/dark theme/main.css");
 	darkThemeCSS.disabled = false;
 	darkThemeEnabled = true;
 }

@@ -1,3 +1,5 @@
+@import "./scratch-gui.css";
+
 html, body {
 	background: #101010;
 	color: #dfdfdf;
@@ -232,25 +234,6 @@ h1, h2, h3, h4, h5, p {
 	background-color: inherit;
 }
 
-/* project player */
-
-.stage-header_stage-header-wrapper-overlay_5vfJa {
-	background-color: #303030;
-}
-.green-flag_green-flag_1kiAo:hover, .stop-all_stop-all_1Y8P9:hover {
-	background-color: #ffaf0030;
-}
-.green-flag_green-flag_1kiAo.green-flag_is-active_2oExT {
-	background-color: #ffaf0050;
-}
-.stage-header_stage-button_hkl9B {
-	background: #202020;
-	filter: grayscale(100%);
-}
-.stage_stage-wrapper-overlay_fmZuD {
-	background-color: #181818;
-}
-
 /* project pages */
 
 .preview .project-lower-container {
@@ -325,86 +308,6 @@ h1, h2, h3, h4, h5, p {
 }
 .preview .thumbnail.gallery .thumbnail-image, .preview .thumbnail.project .thumbnail-image {
 	width: 204px;
-}
-
-/* project player & editor */
-
-.preview .guiPlayer {
-	color: #575e75;
-}
-.gui_body-wrapper_-N0sA {
-	background: #202020;
-	color: #575e75;
-}
-.gui_extension-button-container_b4rCs {
-	background: #ff8000;
-	border-color: transparent;
-	box-shadow: 0 0 0 #ff8000;
-	transition: background 0.2s ease, box-shadow 0.3s ease;
-}
-.gui_extension-button-container_b4rCs:hover {
-	background: #ffaf00;
-	box-shadow: 0 0 10px #ffaf00;
-}
-.gui_extension-button-container_b4rCs > button, .gui_extension-button-container_b4rCs > button:hover {
-	background: transparent;
-}
-.gui_tab_27Unf {
-	background: #404040;
-	color: #dfdfdf;
-	border-color: transparent;
-	box-shadow: 0 0 5px #000000;
-}
-.gui_tab_27Unf:hover {
-	background: #706050;
-}
-.gui_tab_27Unf.gui_is-selected_sHAiu {
-	background: #505050;
-	filter: hue-rotate(160deg);
-}
-.backpack_backpack-container_2_wGr, .backpack_backpack-header_6ltCS, .backpack_status-message_3kt5s {
-	color: #dfdfdf;
-}
-.backpack_backpack-header_6ltCS {
-	background: #505050;
-}
-.stage-selector_stage-selector_3oWOr {
-	background: #303030;
-	color: #dfdfdf;
-}
-
-/* blockly */
-
-.blocklySvg {
-	background: #101010;
-}
-.blocklyMainBackground {
-	opacity: 0;
-}
-.blocklyScrollbarHandle {
-	fill: #505050;
-}
-.blocklyFlyoutBackground {
-	fill: #303030;
-}
-.blocklyFlyoutLabelText {
-	fill: #dfdfdf;
-}
-.blocklyToolboxDiv {
-	background: #404040;
-}
-.scratchCategoryMenu {
-	color: #dfdfdf;
-	background: #404040;
-}
-.scratchCategoryMenuItem.categorySelected {
-	background: #706050;
-}
-.scratchCategoryMenuItem:hover {
-	color: #ffaf00 !important;
-}
-.blocklyZoom {
-	filter: invert(85%);
 }
 
 /* explore bar */

@@ -23,7 +23,7 @@
 	],
 	"web_accessible_resources": [
 		"inject/inject.css",
-		"inject/dark_theme.css",
+		"inject/dark theme/*.css",
 		"inject/icons_xs.png"
 	],
 	"permissions": [
