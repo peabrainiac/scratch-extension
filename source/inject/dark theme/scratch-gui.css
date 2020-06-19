@@ -63,6 +63,22 @@
 	background: #505050;
 }
 
+/* project name field in editor */
+
+input[type="text"].project-title-input_title-field_en5Gd {
+	background: #00000060;
+}
+input[type="text"].project-title-input_title-field_en5Gd:hover {
+	border-color: transparent;
+	background: #000000a0;
+}
+input[type="text"].project-title-input_title-field_en5Gd:focus {
+	border-color: transparent;
+	background: #000000c0;
+	box-shadow: 0 0 0 4px #00000040;
+	color: #dfdfdf;
+}
+
 /* editor - sprite list and settings */
 
 .sprite-selector_sprite-selector_2KgCX {
@@ -81,10 +97,20 @@
 .input_input-form_l9eYg:hover {
 	border-color: #ffaf00;
 }
+.input_input-form_l9eYg:disabled:hover {
+	border-color: #505050;
+}
+.sprite-selector-item_sprite-selector-item_kQm-i:hover {
+	border-color: #ff8000;
+	background: #404040;
+}
 .sprite-selector-item_sprite-selector-item_kQm-i.sprite-selector-item_is-selected_24tQj {
 	box-shadow: 0 0 0 4px #ff800060;
 	border-color: #ff8000;
 	background: #404040;
+}
+.sprite-selector-item_sprite-info_-I0i_ {
+	color: #a0a0a0;
 }
 .sprite-selector-item_is-selected_24tQj .sprite-selector-item_sprite-info_-I0i_ {
 	background: #ff8000;
@@ -96,8 +122,18 @@
 .stage-selector_stage-selector_3oWOr {
 	background: #303030;
 }
+.stage-selector_stage-selector_3oWOr.stage-selector_is-selected_2x2r_ {
+	box-shadow: 0 0 0 4px #ff800060;
+	border-color: #ff8000;
+}
+.stage-selector_stage-selector_3oWOr:hover {
+	border-color: #ff8000;
+}
 .stage-selector_header_2GVr1 {
 	background-color: #404040;
+}
+.stage-selector_stage-selector_3oWOr.stage-selector_is-selected_2x2r_ .stage-selector_header_2GVr1 {
+	background-color: #ff8000;
 }
 .stage-selector_header-title_33xCt {
 	color: #dfdfdf;
@@ -106,7 +142,7 @@
 	color: #a0a0a0;
 }
 
-/* blockly */
+/* scratch blocks / blockly */
 
 .blocklySvg {
 	background: #101010;
