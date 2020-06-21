@@ -175,3 +175,36 @@ input[type="text"].project-title-input_title-field_en5Gd:focus {
 .blocklyZoom {
 	filter: invert(85%);
 }
+
+/* scratch paint / custome editor */
+
+.asset-panel_wrapper_366X0 {
+	background-color: #282828;
+}
+.selector_wrapper_8_BHs {
+	background-color: #303030;
+}
+.selector_new-buttons_2qHDd::before {
+	background: linear-gradient(#30303000,#303030ff);
+}
+.paint-editor_button-group-button_1I1tm, [dir="ltr"] .paint-editor_button-group-button_1I1tm:first-of-type {
+	border-color: #505050;
+}
+.paint-editor_button-group-button-icon_10kVn {
+	filter: hue-rotate(180deg);
+}
+img.tool-select-base_tool-select-icon_tJ-rr {
+	filter: grayscale(100%);
+}
+.button_mod-disabled_1rf31 {
+	filter: grayscale(70%);
+}
+
+/* sound editor */
+
+.sound-editor_button_1_6Li, .sound-editor_button_1_6Li:disabled:hover {
+	background-color: #404040;
+}
+.sound-editor_round-button_3NLcW {
+	border-color: #282828bf;
+}

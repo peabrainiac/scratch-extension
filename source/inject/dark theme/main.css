@@ -21,7 +21,7 @@ a:hover {
 label {
 	color: #a0a0a0;
 }
-input[type="text"], input[type="password"], textarea, select {
+input[type="text"], input[type="password"], input[type="number"], textarea, select {
 	color: #dfdfdf;
 	background: #303030;
 	border-color: #505050;
