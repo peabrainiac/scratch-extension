@@ -138,28 +138,12 @@ function addGalleryUtils(){
 	}
 	function createButton(id,text,parent){
 		var button = document.createElement("div");
-		button.innerHTML = "<span>"+text+"</span>";
+		button.innerHTML = "<span></span>";
+		button.querySelector("span").textContent = text;
 		button.id = id;
 		button.className = "button grey small";
 		button.style.marginLeft = "5px";
 		parent.appendChild(button);
 		return button;
 	}
-	var textbox = (function(){
-		var obj;
-		var element;
-		obj.remove = function(){
-			if (element){
-				element.parentNode.removeElement(element);
-			}
-		};
-		obj.display = function(text){
-			obj.remove();
-			element = document.createElement("div");
-			document.getElementById("add-curator-dialog").appendChild(element);
-			element.innerHTML = text;
-			element.className = "studio-tools-box";
-		};
-		return obj;
-	})();
 }

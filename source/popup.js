@@ -248,7 +248,7 @@ function addCommentForm(commentDiv,replyData,enviroment,onResize){
 		onResize();
 	}
 	function updateCharsDisplay(){
-		charsDisplay.innerHTML = input.value.length+"/500";
+		charsDisplay.textContent = input.value.length+"/500";
 		if (input.value.length>500&&!(chars>500)){
 			charsDisplay.classList.add("red");
 			postButton.classList.add("disabled");
